@@ -20,9 +20,6 @@ public class GameManager : MonoBehaviour
     public bool powerupReset;
     public bool timerReset;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         platformStartPoint = platformGenerator.position;
@@ -32,11 +29,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void RestartGame()
     {

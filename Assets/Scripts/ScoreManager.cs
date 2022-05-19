@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour {
 
         if (scoreIncreasing)
         {
-            scoreCount += pointsPerSecond;
+            scoreCount += pointsPerSecond / 0.5f;
         }
     
         if (scoreCount > hiScoreCount)
