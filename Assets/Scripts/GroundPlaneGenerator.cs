@@ -6,6 +6,7 @@ using UnityEngine;
 /// the ground platform does not contain any power up, double up object 
 /// enemy patrolling 
 /// tagged kill box to the enemy
+/// max height going to be 2. One for floating platform, one for ground platform 
 /// </summary>
 public class GroundPlaneGenerator : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GroundPlaneGenerator : MonoBehaviour
 
     private float platformWidth;
 
+    [Header("Platform Distance")]
     public float distanceBetweenMin;
     public float distanceBetweenMax;
 
@@ -34,10 +36,11 @@ public class GroundPlaneGenerator : MonoBehaviour
     private CoinGenerator theCoinGenerator;
     public float randomCoinThreshold;
 
-    
+    [Header("Spike Generator")]
     public float randomSpikeThreshold;
     public ObjectPooler spikePool;
 
+    [Header ("Reward Generaor")]
     public float powerupHeight;
     public ObjectPooler powerupPool;
     public float powerupThreshold;
@@ -55,7 +58,7 @@ public class GroundPlaneGenerator : MonoBehaviour
         minHeight = transform.position.y;
         maxHeight = maxHeightpoint.position.y;
 
-        theCoinGenerator = FindObjectOfType<CoinGenerator>();
+        //theCoinGenerator = FindObjectOfType<CoinGenerator>();
 
     }
 
@@ -78,7 +81,10 @@ public class GroundPlaneGenerator : MonoBehaviour
             {
                 heightChange = minHeight;
             }
+            
 
+            //this going to be replaced with enemy patrol
+            //add the killbox tag
             if (Random.Range(0f, 100f) < powerupThreshold)
             {
                 GameObject newPowerup = powerupPool.GetPooledObject();
@@ -122,6 +128,7 @@ public class GroundPlaneGenerator : MonoBehaviour
 
         }
 
+        //! destroy platform if position <= -15
         GameObject currentChild;
         for (int i = 0; i < transform.childCount; i++)
         {
